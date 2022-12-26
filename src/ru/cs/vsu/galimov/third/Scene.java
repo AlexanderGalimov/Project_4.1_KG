@@ -71,7 +71,7 @@ public class Scene {
                         points.add(cam.w2s(v));
                     }
                     /*Создаём на их основе новые полилинии, но в том виде, в котором их видит камера*/
-                    lines.add(new PolyLine3D(points, pl.isClosed()));
+                    lines.add(new PolyLine3D(points, pl.isClosed(),pl.getColor()));
                 }
             }
         /*Закрашиваем фон*/

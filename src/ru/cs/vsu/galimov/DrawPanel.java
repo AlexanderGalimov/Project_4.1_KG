@@ -13,12 +13,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class DrawPanel extends JPanel
-        implements CameraController.RepaintListener {
+public class DrawPanel extends JPanel implements CameraController.RepaintListener {
     private Scene scene;
     private ScreenConverter sc;
     private Camera cam;
     private CameraController camController;
+    private Bolt bolt;
 
     public DrawPanel() {
         super();
@@ -32,8 +32,9 @@ public class DrawPanel extends JPanel
                 new Vector3(-0.4f, -0.4f, -0.4f),
                 new Vector3(0.4f, 0.4f, 0.4f)
         ));*/
-
-        scene.getModelsList().add(new Bolt(new Vector3(0,0,0), 0.5,1, 0.3, Math.PI));
+        bolt = new Bolt(new Vector3(0,0,0), 0.5,1, 0.3, Math.PI);
+        //bolt = new Bolt(new Vector3(0,0,0), 0.5,0.5, 0.1, Math.PI);
+        scene.getModelsList().add(bolt);
         /*scene.getModelsList().add(
                 new HelixLine(0.3f, 0.01f, 0, 100 * (float) Math.PI, 0));
         scene.getModelsList().add(
@@ -46,6 +47,17 @@ public class DrawPanel extends JPanel
         addMouseMotionListener(camController);
         addMouseWheelListener(camController);
     }
+
+    public void changeParamsOfBolt(float f1,float f2, float f3, float f4){
+        bolt.setHeightOfHat(f1);
+        bolt.setRadiusOfHat(f2);
+        bolt.setRadiusOfBase(f3);
+        bolt.setLength(f4);
+        bolt.logic();
+        repaint();
+    }
+
+
 
     @Override
     public void paint(Graphics g) {

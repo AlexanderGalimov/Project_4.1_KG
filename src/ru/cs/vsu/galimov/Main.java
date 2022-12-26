@@ -10,5 +10,8 @@ public class Main {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.add(new DrawPanel());
         frame.setVisible(true);
+
+        /*new MainWindow();
+        new MainWindow(true);*/
     }
 }

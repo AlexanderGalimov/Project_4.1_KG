@@ -28,6 +28,8 @@ public class PolyLine3D {
         this.color = color;
     }
 
+
+
     public Vector3 getNormal() {
         float x1 = points.get(0).getX();
         float y1 = points.get(0).getY();
@@ -47,7 +49,7 @@ public class PolyLine3D {
     public double getCos(Vector3 z, Vector3 normal) {
         double cos = (z.getX()*normal.getX() + z.getY()*normal.getY() + z.getZ()*normal.getZ())/(sqrt(pow(z.getX(), 2) + pow(z.getY(), 2) + pow(z.getZ(), 2))*sqrt(pow(normal.getX(), 2) + pow(normal.getY(), 2) + pow(normal.getZ(), 2)));
         if (cos < 0) {
-            return 0;
+            return -cos;
         }
         return cos;
     }
@@ -66,6 +68,13 @@ public class PolyLine3D {
     public PolyLine3D(List<Vector3> v, boolean closed) {
         this.points = v;
         this.closed = closed;
+        this.color = Color.BLACK;
+    }
+
+    public PolyLine3D(Collection<Vector3> points, boolean closed, Color color){
+        this.points = new LinkedList<>(points);
+        this.closed = closed;
+        this.color = color;
     }
 
     /**

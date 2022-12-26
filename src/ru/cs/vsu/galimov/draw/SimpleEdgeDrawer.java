@@ -44,13 +44,11 @@ public class SimpleEdgeDrawer extends ScreenGraphicsDrawer {
             getGraphics().fillPolygon(crds.getXx(), crds.getYy(), crds.size());
         else
             getGraphics().drawPolyline(crds.getXx(), crds.getYy(), crds.size());*/
-        Random random = new Random();
-        //getGraphics().setColor(new Color(random.nextInt(255),  random.nextInt(255), random.nextInt(255)));
-        getGraphics().setColor(Color.BLACK);
+
+        getGraphics().setColor(polyline.getColor());
         if (polyline.isClosed()) {
-            getGraphics().drawPolygon(crds.getXx(), crds.getYy(), crds.size());
-            double cos = polyline.getCos(new Vector3(0, 0, 1), polyline.getNormal());
-            System.out.println(cos);
+
+            double cos = polyline.getCos(new Vector3(100, 0, 0), polyline.getNormal());
             getGraphics().setColor(new Color((int) (130*(cos)), (int) (130*(cos)), (int) (130*(cos))));
             getGraphics().fillPolygon(crds.getXx(), crds.getYy(), crds.size());
             //getGraphics().drawPolygon(crds.getXx(), crds.getYy(), crds.size());//todo fill polygon
